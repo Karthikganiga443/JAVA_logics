@@ -1,0 +1,349 @@
+package controlstatements;
+import java.util.Scanner;
+
+public class Test3 {
+
+//	1.Write a program that takes an integer as input and prints whether the number is odd or even. :
+	
+public static void iseven(Scanner sc) {
+	System.out.println("enter the number: ");
+	int num=sc.nextInt();
+	if (num%2==0) System.out.println(num+" is even");
+	else System.out.println(num+ " is odd");
+}
+
+//2.Write a program that reads an integer from the user and prints whether the number is positive, negative, or zero.
+
+public static void ispositive(Scanner sc) {
+	System.out.println("enter the number: ");
+	int num=sc.nextInt();
+	if (num>0) System.out.println(num+" is positive");
+	else if (num<0) System.out.println(num+ " is negative");
+	else System.out.println(num+ " is Zero");
+}
+
+//3.Write a program that takes two integers as input and prints the greater of the two numbers.
+
+public static void isgreater(Scanner sc) {
+	System.out.println("enter the first number: ");
+	int num1=sc.nextInt();
+	System.out.println("enter the second number: ");
+	int num2=sc.nextInt();
+	if (num1>num2) System.out.println(num1 +" is greater than "+num2);
+	else System.out.println(num1+" is less than "+num2);
+}
+
+//4.Write a program that takes a single character as input and checks if it is a vowel or a consonant.
+
+public static void isvowelinstring(Scanner sc) {
+	System.out.println("Enter the Character: ");
+	String a=sc.next();
+	if (a.equals("a")||a.equals("A")||a.equals("e")||a.equals("E")||a.equals("i")||a.equals("I")||a.equals("o")||a.equals("O")||a.equals("u")||a.equals("U")) System.out.println(a+" is a vowel");
+	else System.out.println(a+" is the consonant");
+}
+
+public static void isvowelinchar(Scanner sc) {
+	System.out.println("Enter the Character: ");
+	char a=sc.next().charAt(0);
+	if((a=='a')||(a=='A')||(a=='e')||(a=='E')||(a=='i')||(a=='I')||(a=='o')||(a=='O')||(a=='u')||(a=='U')) System.out.println(a+" is a vowel");
+	else System.out.println(a+ " is the consonant");
+}
+
+//"5.Write a program that takes the temperature in Celsius as input and prints:
+//""Cold"" if the temperature is below 20
+//""Warm"" if the temperature is between 20 and 30
+//""Hot"" if the temperature is above 30"
+
+public static void checkTemperature(Scanner sc) {
+	System.out.println("Enter the Celsius : ");
+	int cel =sc.nextInt();
+	if (cel<=20) System.out.println("Cold");
+	else if ((cel>20) &&(cel<=30)) System.out.println("Warm");
+	else System.out.println("Hot");
+}
+
+//"6.Take values of length and breadth of a rectangle from user and 
+//check if it is a square or not."
+
+public static void isSquare(Scanner sc) {
+	System.out.println("enter the length and breadth : ");
+	int length=sc.nextInt();
+	int breadth=sc.nextInt();
+	if(length==breadth) System.out.println("it is Square");
+	else System.out.println("it is a rectangle");
+}
+
+//"7.A shop will give discount of 10% if the cost of purchased quantity
+//is more than 1000.Ask user for quantity.Suppose, one unit will cost
+//100.Print the total cost for user."
+
+public static void calcdiscount(Scanner sc) {
+	System.out.println("Enter the QTY: ");
+	int Qty=sc.nextInt();
+	int i=100;
+	int sum=Qty*i;
+	if (sum>1000) {
+		int j=sum/10;
+		sum=sum-j;
+		System.out.println(sum);
+		}
+	else System.out.println(sum);
+	}
+
+//"8.A company decided to give bonus of 5% to employee if his/her year 
+//of service is more than 5 years.Ask user for their salary and year
+//of service and print the net bonus amount."
+
+public static void calcBonus(Scanner sc) {
+	System.out.println("Enter the Salary: ");
+	int salary=sc.nextInt();
+	System.out.println("Enter the Service Year: ");
+	int serviceYear=sc.nextInt();
+	if (serviceYear>5) System.out.println("your bonus is : "+ salary*0.05);
+	else System.out.println("you will get a bonus after "+(5-serviceYear)+" years");
+}
+
+//"9.A student will not be allowed to sit in exam if his/her attendance is less than 75%.
+//Take the following input from user:
+//  - Number of classes held
+//  - Number of classes attended
+//  And print percentage of class attended.
+//  Is student is allowed to sit in exam or not."
+
+public static void attendancePercentagecalc(Scanner sc) {
+	System.out.println("Enter the class attended and class held: ");
+	int classAttended=sc.nextInt();
+	int classHeld=sc.nextInt();
+	float attendance=((classAttended*100)/classHeld);
+	System.out.println("your attendance percentage is "+attendance);
+	if (attendance<75) System.out.println("your are not allowed to sit in exam");
+	else System.out.println("your are allowed");
+}
+
+//10.Print all the divisior of a number
+
+public static void alldivisor(Scanner sc) {
+	System.out.println("Enter the number: ");
+	int num=sc.nextInt();
+	int i=1;
+	while(i<=num) {
+		if (num%i==0) System.out.print(i+" ");
+	i++;
+	}
+}
+
+//11.Check number is prime or not.
+
+public static String isprime(Scanner sc) {
+	System.out.println("Enter the number to check prime: ");
+	int num=sc.nextInt();
+	if(num<=1) {
+		return num+" is not a prime";
+	}
+	else {
+		for (int i=2;i<num;i++) {
+			if(num%i==0) return num+ " is not a prime";
+		}	
+	}	
+	return num+ " is a prime";
+}
+
+//12.Find the GCD of two given numbers.
+
+public static int gcd(Scanner sc) {
+	System.out.println("enter 1st and 2nd number: ");
+	int a=sc.nextInt();
+	int b=sc.nextInt();
+	if (a>b) {
+		int c=a%b;
+		if(c==0) {
+			return b;
+		}
+		else {
+			for(int j=b-1;j>0;j--) {
+				if((b%j==0)&&(a%j==0)) {
+					return j;
+				}
+			}
+		}
+	}
+	else {
+		int c=b%a;
+		if(c==0) {
+			return b;
+		}
+		else {
+			for(int j=a-1;j>0;j--) {
+				if((a%j==0)&&(b%j==0)) {
+					return j;
+				}
+			}
+		}
+		
+	}
+	
+	return -1;
+	
+}
+
+//"13.Chef has started working at the candy store. The store has 100 chocolates in
+//total.Chef’s daily goal is to sell X chocolates. For each chocolate sold,
+//he will get 1 rupee. However, if Chef exceeds his daily goal, he gets
+//2 rupees per chocolate for each extra chocolate.
+//If Chef sells Y chocolates in a day, find the total amount he made.
+//"
+
+public void chocoSold(Scanner sc) {
+	System.out.println("enter the numbe of chocolate sold: ");
+	int a=sc.nextInt();
+	System.out.println("enter the threshold: ");
+	int b=sc.nextInt();
+	if(a>b) {
+		System.out.println("total rupes: "+a*2);
+	}
+	else {
+		System.out.println("total rupees: "+a);
+	}
+}
+
+//"14.Chef has X 5 rupee coins and Y 10 rupee coins. Chef goes to a shop to buy
+//chocolates for Chefina where each chocolate costs Z rupees.
+//Find the maximum number of chocolates that Chef can buy for Chefina."
+
+public static void buyChoco(Scanner sc) {
+	System.out.println("Enter the number of 5 and 10 rupees coins: ");
+	int fiverup=sc.nextInt();
+	int tenrup=sc.nextInt();
+	System.out.println("enter the each Chocolate cost: ");
+	int chocoprice=sc.nextInt();
+	int totalrup=(fiverup*5)+(tenrup*10);
+	System.out.println("total chocolate purchased: "+(totalrup/chocoprice)+" and total price is : "+(totalrup/chocoprice)*chocoprice+"rupees");
+	System.out.println("money left: "+(totalrup-((totalrup/chocoprice)*chocoprice))+"rupees");
+}
+
+//15.WAP to find the count of digits.
+
+public static void totaldigits(Scanner sc) {
+	System.out.println("Enter the digits: ");
+	int digits=sc.nextInt();
+	System.out.println("number of digits : "+findtotaldigits(digits));
+}
+static int count=0;
+public static int findtotaldigits(int digits) {
+	if (digits<=0) return count;
+	int i=digits%10;
+	count+=1;
+	digits=digits/10;
+    return findtotaldigits(digits);
+}
+
+//"16.Favourite Numbers
+//Alice likes numbers which are even, and are a multiple of 7.
+//Bob likes numbers which are odd, and are a multiple of 9.
+//If Alice likes 𝐴A, Alice takes home the number.
+//If Bob likes A, Bob takes home the number.
+//If both Alice and Bob don't like the number, Charlie takes it home.
+//Given A, find who takes it home."
+
+public static void favNumbers(Scanner sc) {
+	System.out.println("Enter the number: ");
+	int num=sc.nextInt();
+	if((num%2==0)&&(num%7==0)) System.out.println("Alice takes the number");
+	else if ((num%2!=0)&&(num%9==0)) System.out.println("Bob takes the number");
+	else System.out.println("Charlie takes the number");
+}
+
+//"17.Chef wants to become fit for which he decided to walk to the office and
+//return home by walking. It is known that Chef's office is X km away from his
+//home.
+//If his office is open on y days in a week,
+//find the number of kilometers Chef travels through office trips in a week."
+
+public static void calckms(Scanner sc) {
+	System.out.println("Enter the distance b/w your house and office in kms: ");
+	int dist=sc.nextInt();
+	System.out.println("Enter the working days in a week: ");
+	int workday=sc.nextInt();
+	int totalkms=(dist*2)*workday;
+	System.out.println("the number of kms chef travels in a week: "+totalkms+"kms");
+	
+}
+
+//18.WAP to reverse a number. and 20.WAP to check number is a palindrome or not.
+
+public static void revsnumber(Scanner sc) {
+	System.out.println("Enter the number: ");
+	int num=sc.nextInt();
+	System.out.println(revs(num));
+}
+
+static int reversed=0;
+public static int revs(int num) {
+	if (num<=0) return reversed;
+	reversed=reversed*10+(num%10);
+	num=num/10;
+	return revs(num);
+}
+public static void ispalindrome(Scanner sc) {
+	System.out.println("Enter the number: ");
+	int num=sc.nextInt();
+	int reverse=revs(num);
+	if (num==reverse) System.out.println("its a palindrome");
+	else System.out.println("its not a palindrome");
+}
+
+//19.Pattern Programs:    a.LeftAngleTriangle       b.RightAngledTriangle         c.ReverseLeftAngledTriangle    
+//d.ReverseRightAngledTriangle       e.Pyramid        f.diamond
+
+public static void tri(Scanner sc) {
+	System.out.println("Enter the pattern: ");
+	String pattern=sc.next();
+	System.out.println("enter the n: ");
+	int n=sc.nextInt();
+	if (pattern.equals("lat")) {
+		for (int i=0;i<n;i++) {
+			for(int j=0;j<=i;j++) {
+				System.out.print("*");
+			}
+			System.out.println("");
+		}
+	}
+	else if (pattern.equals("rlat")){
+		for (int i=n;i>0;i--) {
+			for(int j=0;j<i;j++) {
+				System.out.print("*");
+			}
+			System.out.println("");
+		}
+	}
+	else if(pattern.equals("rat")) {
+		
+	}
+}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+//		iseven(sc);
+//     	ispositive(sc);
+//		isgreater(sc);
+//		isvowelinstring(sc);
+//		isvowelinchar(sc);
+//		checkTemperature(sc);
+//		isSquare(sc);	
+//		calcdiscount(sc);
+//		calcBonus(sc );
+//		attendancePercentagecalc(sc);
+//		alldivisor(sc);
+//		System.out.println(isprime(sc));
+//		System.out.println(gcd(sc));
+//		Test3 test3=new Test3();
+//		test3.chocoSold(sc);
+//		buyChoco(sc);  
+//		totaldigits(sc);
+//		favNumbers(sc);
+//		calckms(sc);
+//		revsnumber(sc);
+//		ispalindrome(sc);
+//		tri(sc);
+	}
+}
