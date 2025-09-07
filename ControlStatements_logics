@@ -270,6 +270,16 @@ public static void calckms(Scanner sc) {
 
 //18.WAP to reverse a number. and 20.WAP to check number is a palindrome or not.
 
+ public int reverse(int x) {
+        int revs=0;
+        while(x!=0){
+            int i=x%10;
+            revs=revs*10+i;
+            x=x/10;
+        }
+        return revs;
+    }
+
 public static void revsnumber(Scanner sc) {
 	System.out.println("Enter the number: ");
 	int num=sc.nextInt();
