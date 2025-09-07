@@ -274,8 +274,11 @@ public static void calckms(Scanner sc) {
         int revs=0;
         while(x!=0){
             int i=x%10;
+            if ((revs>Integer.MAX_VALUE/10)||(revs==Integer.MAX_VALUE/10 && i>7)) return 0;
+            if((revs<Integer.MIN_VALUE/10)||(revs==Integer.MAX_VALUE/10 && i<-8)) return 0;
             revs=revs*10+i;
             x=x/10;
+            
         }
         return revs;
     }
