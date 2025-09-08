@@ -1,0 +1,179 @@
+//1.finds the maximum sum of a contiguous subarray of size k (using sliding window)
+
+method: 1
+
+package basics;
+public class Test2 {
+    public static int maxsubarray(int k, int[] a) {
+        int maxSum = Integer.MIN_VALUE;
+        int windowSum = 0;
+
+        for(int i = 0; i < k; i++) {
+            windowSum += a[i];
+        }
+        maxSum = windowSum;
+
+        for(int i = k; i < a.length; i++) {
+            windowSum += a[i] - a[i - k];
+            maxSum = Math.max(maxSum, windowSum);
+        }
+
+        return maxSum;
+    }
+
+    public static void main(String[] args) {
+        int[] a = {100, 900, 200, 300, 400, 800};
+        int k = 2;
+        System.out.println("Maximum sum of " + k + " consecutive elements is: " + maxsubarray(k, a));
+    }
+}
+
+method 2:(using recursion)
+
+package basics;
+
+import java.util.Arrays;
+//maximun subarray with window size (sliding window)
+public class Test2 {
+	static int maxSum=Integer.MIN_VALUE;
+public static int maxsubarray(int k, int[] a, int LeftPointer, int RightPointer) {
+	if(RightPointer==a.length) return maxSum;
+	if(RightPointer-LeftPointer+1==k) {
+		int windowSum=0;
+		for(int i=LeftPointer;i<=RightPointer;i++) {
+			windowSum+=a[i];
+			maxSum=Math.max(maxSum, windowSum);
+		}
+	}
+	return maxsubarray(k, a,LeftPointer+1,RightPointer+1);
+}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub=
+		int[] a= {100,900,200,300,400,800};
+		int k=3;
+		System.out.println(maxsubarray(k, a, 0, k-1));
+		
+	}
+
+}
+
+//2. maxele – Finds and prints the maximum element in each window.
+//   minele – Finds and prints the minimum element in each window.
+//   mostneg – Finds and prints the smallest (most negative) element in each window, or 0 if there is no negative element in that window.
+
+method - 1 (using recursion)
+
+package basics;
+
+public class Test4{
+
+    public static void maxele(int[] a, int k, int LeftPointer, int RightPointer) {
+        if (RightPointer == a.length) return;
+
+        if (RightPointer - LeftPointer + 1 == k) {
+            int maxInWindow = Integer.MIN_VALUE;
+            for (int i = LeftPointer; i <= RightPointer; i++) {
+                maxInWindow = Math.max(maxInWindow, a[i]);
+            }
+            System.out.println(maxInWindow);
+        }
+
+        maxele(a, k, LeftPointer + 1, RightPointer + 1);
+    }
+
+    public static void minele(int[] a, int k, int LeftPointer, int RightPointer) {
+        if (RightPointer == a.length) return;
+
+        if (RightPointer - LeftPointer + 1 == k) {
+            int minInWindow = Integer.MAX_VALUE;
+            for (int i = LeftPointer; i <= RightPointer; i++) {
+                minInWindow = Math.min(minInWindow, a[i]);
+            }
+            System.out.println(minInWindow);
+        }
+
+        minele(a, k, LeftPointer + 1, RightPointer + 1);
+    }
+    
+    public static void mostneg(int[] a, int k, int LeftPointer, int RightPointer) {
+        if (RightPointer == a.length) return;
+
+        if (RightPointer - LeftPointer + 1 == k) {
+            int minInWindow = 0;
+            for (int i = LeftPointer; i <= RightPointer; i++) {
+                minInWindow = Math.min(minInWindow, a[i]);
+            }
+            System.out.println(minInWindow);
+        }
+
+        mostneg(a, k, LeftPointer + 1, RightPointer + 1);
+    }
+
+    public static void main(String[] args) {
+        int[] a = {1, 9, 8, -5, 3, 2, 8};
+        int k = 2;
+
+        System.out.println("Max elements in each subarray:");
+        maxele(a, k, 0, k - 1);
+
+        System.out.println("-------------------");
+
+        System.out.println("Min elements in each subarray:");
+        minele(a, k, 0, k - 1);
+        
+        System.out.println("----------------------------");
+        System.out.println("most negative number else print 0: ");
+        mostneg(a, k, 0, k-1);
+    }
+}
+method - 2: using loops
+
+package basics;
+
+public class Test5 {
+
+    public static void maxele(int[] a, int k) {
+        System.out.println("Max elements in each subarray:");
+        for (int LeftPointer = 0; LeftPointer <= a.length - k; LeftPointer++) {
+            int maxInWindow = Integer.MIN_VALUE;
+            for (int i = LeftPointer; i < LeftPointer + k; i++) {
+                maxInWindow = Math.max(maxInWindow, a[i]);
+            }
+            System.out.println(maxInWindow);
+        }
+    }
+
+    public static void minele(int[] a, int k) {
+        System.out.println("Min elements in each subarray:");
+        for (int LeftPointer = 0; LeftPointer <= a.length - k; LeftPointer++) {
+            int minInWindow = Integer.MAX_VALUE;
+            for (int i = LeftPointer; i < LeftPointer + k; i++) {
+                minInWindow = Math.min(minInWindow, a[i]);
+            }
+            System.out.println(minInWindow);
+        }
+    }
+
+    public static void mostneg(int[] a, int k) {
+        System.out.println("Most negative number else print 0:");
+        for (int LeftPointer = 0; LeftPointer <= a.length - k; LeftPointer++) {
+            int minNeg = 0;
+            for (int i = LeftPointer; i < LeftPointer + k; i++) {
+                minNeg=Math.min(minNeg, a[i]);
+            }
+            System.out.println(minNeg);
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] a = {1, 9, 8, -5,-2, 3, 2, 8};
+        int k = 2;
+
+        maxele(a, k);
+        System.out.println("-------------------");
+        minele(a, k);
+        System.out.println("-------------------");
+        mostneg(a, k);
+    }
+}
+
