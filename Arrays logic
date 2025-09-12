@@ -68,7 +68,7 @@ package basics;
 public class Test4{
 
     public static void maxele(int[] a, int k, int LeftPointer, int RightPointer) {
-        if (RightPointer == a.length) return;
+        if (RightPointer == a.length) return; 
 
         if (RightPointer - LeftPointer + 1 == k) {
             int maxInWindow = Integer.MIN_VALUE;
@@ -433,6 +433,33 @@ public class Test8 {
 	}
 
 }
+
+//9. reverses each word in the input string separately while keeping the order of the words intact.	
+
+package basics;
+
+public class Test3 {
+	public static void reverse(String s) {
+	    String[] str = s.split(" ");
+	    for (int i = 0; i < str.length; i++) {
+	        for (int j = str[i].length() - 1; j >= 0; j--) {
+	            System.out.print(str[i].charAt(j));
+	        }
+	        System.out.print(" "); // Add space between reversed words
+	    }
+	    
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		String s="Java is a Programming Language";
+		reverse(s);
+
+	}
+
+}
+
 
 
 
