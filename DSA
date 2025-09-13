@@ -1,0 +1,160 @@
+(Searching algorithms)
+
+1. linear search : It checks each element in a list one by one, from the beginning to the end, until it finds the target value or reaches the end of the list.
+
+package basics;
+public class Test4 {
+	public static void linearSearch(int[] ar, int target) {
+		for(int i=0;i<ar.length;i++) {
+			if(ar[i]==target) {
+				System.out.println("index of target element is "+i);
+			}
+		}
+	}
+	public static void main(String[] args) {
+	int[] arr= {2,8,5,4,3,7,19,1};
+	linearSearch(arr, 19);
+	}
+}
+
+2. Binary Search: It divides the search space in half at each step, checking the middle element and deciding whether to search in the left or right half of the array.
+
+package basics;
+public class Test4 {
+	public static int BinarySearch(int[] arr, int target) {
+		int left=0;
+		int right=arr.length-1;
+		while(left<=right) {
+			int mid=(left+right)/2;
+			if(arr[mid]==target) return mid;
+			else if(arr[mid]<target) {
+				left=mid+1;
+			}
+			else {
+				right=mid-1;
+			}
+		}
+		return -1;
+	}
+	public static void main(String[] args) {
+	int[] arr= {1,2,3,4,5,6,7,8,9,10,12,19,20,21};
+	int result=BinarySearch(arr, 109);
+	if(result!=-1) System.out.println("index of the number is "+ result);
+	else System.out.println("number not found");
+	}
+}
+
+(Sorting Algorithms)
+
+1. buuble sort: repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. This process is repeated until the list is sorted.
+
+package basics;
+import java.util.Arrays;
+public class Test4 {
+	public static void BubbleSort(int[] arr) {
+		for(int i=0;i<arr.length;i++) {
+			for(int j=0;j<arr.length-1;j++) {
+				if(arr[j]>arr[j+1]) {
+					int temp=arr[j];
+					arr[j]=arr[j+1];
+					arr[j+1]=temp;
+				}
+			}
+		}
+		System.out.println(Arrays.toString(arr));
+	}
+	public static void main(String[] args) {
+	int[] arr= {9,2,6,7,8,3,4,5,9,3,1};
+	BubbleSort(arr);
+	}
+}
+
+
+2. Selection Sort: repeatedly selecting the smallest (or largest) element from the unsorted portion of the array and moving it to the beginning (or end).
+
+package basics;
+import java.util.Arrays;
+public class Test4 {
+	public static void SelectionSort(int[] arr) {
+		
+		for(int i=0;i<arr.length;i++) {
+			int minIndex=i;
+			for(int j=i+1;j<arr.length;j++) {
+				if(arr[j]<arr[minIndex]) {
+					minIndex=j;
+				}
+			}
+			int temp=arr[i];
+			arr[i]=arr[minIndex];
+			arr[minIndex]=temp;
+		}
+		System.out.println(Arrays.toString(arr));
+	}
+	public static void main(String[] args) {
+	int[] arr= {9,2,6,7,8,3,4,5,9,3,1};
+	SelectionSort(arr);
+	}
+}
+
+Quick Sort: Choose a pivot element from the array. Partition the array such that: Elements less than the pivot are moved to the left or Elements greater than the pivot are moved to the right. Recursively apply Quick Sort to the left and right sub-arrays.
+
+package basics;
+
+import java.util.Arrays;
+//import java.util.Random;
+
+public class Quicksorttest9 {
+static int count=0;
+//static Random rand = new Random();
+public static void Quicksort(int[] arr,int low,int high) {
+	count=count+1;
+	System.out.println("Quicksort call #" + count + " with low=" + low + " high=" + high);
+	if(low<high) {
+		System.out.println("calling partion");
+		int pi=Partion(arr, low, high);
+		Quicksort(arr, low, pi-1);
+		Quicksort(arr, pi+1, high);
+		System.out.println("ends");
+	}
+}
+public static int Partion(int [] arr, int low, int high) {
+//	int randomIndex = low + rand.nextInt(high - low + 1);
+//    // Swap the random pivot with the last element
+//    Swap(arr, randomIndex, high);
+	int pivot=arr[high];
+	int i=low-1;
+	System.out.println("pivot element is "+pivot);
+	for(int j=low;j<high;j++) {
+		if(arr[j]<pivot) {
+			i++;
+			System.out.println("calling swap with i value as "+ i);
+			Swap(arr,i,j);
+			System.out.println(Arrays.toString(arr));
+		}
+//		System.out.println("without swap");
+//		System.out.println(Arrays.toString(arr));
+		
+	}
+	System.out.println("swap at the end");
+	Swap(arr,i+1,high);
+	System.out.println(Arrays.toString(arr));
+	return i+1;
+}
+public static void Swap(int [] arr, int low, int high) {
+	int temp=arr[low];
+	arr[low]=arr[high];
+	arr[high]=temp;
+}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int[] arr= {5,4,5,2,7,4};
+		System.out.println("initial array: "+ Arrays.toString(arr));
+		Quicksort(arr,0,arr.length-1);
+//		System.out.println(Arrays.toString(arr));
+		for(int i=0;i<arr.length;i++) {
+			System.out.print(arr[i]+" ");
+		}
+	}
+
+}
+
