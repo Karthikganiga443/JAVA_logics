@@ -460,6 +460,127 @@ public class Test3 {
 
 }
 
+//10. first non repeated characters in a string:
+
+package basics;
+public class Test6 {
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String str="encyclopedia";
+		for(int i=0;i<str.length();i++) {
+			if(str.indexOf(str.charAt(i))==str.lastIndexOf(str.charAt(i))) {
+				System.out.println(str.charAt(i));
+				break;
+			}
+		}
+	}
+}
+
+//11. This program tries to determine if two strings are anagrams by: Summing their ASCII values (count1 and count2). Counting how many characters from str1 match those in str2 (count). Checking if both sums are equal and all characters match.
+(anagrams: An anagram is a word or phrase formed by rearranging the letters of another word or phrase, using all the original letters exactly once.)
+
+package basics;
+public class Test6 {
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String str1="ad";
+		String str2="bc";
+		int count1 =0;
+		int count2=0;
+		int count=0;
+		if(str1.length()==str2.length()) {
+			for(int i=0;i<str1.length();i++) {
+				count1+=str1.charAt(i);
+				count2+=str2.charAt(i);
+				for(int j=0;j<str2.length();j++) {
+					if(str1.charAt(i)==str2.charAt(j))
+						count++;
+				}
+			}
+		}
+		System.out.println(count1+" "+count2);
+		System.out.println((count1==count2)&&(count==str1.length()));
+	}
+}
+
+//12. find the length of the longest common prefix among the strings in the array
+It sorts the strings lexicographically (based on asci values of first character)
+It takes the first string (str[0]) and generates all possible prefixes.
+It checks for each prefix if the other strings start with it using startsWith().
+It keeps track of the longest prefix length in minval.
+
+package basics;
+import java.util.Arrays;
+public class Test6 {
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String[] str= {"app","ap","apple"};
+		Arrays.sort(str);
+		System.out.println(Arrays.toString(str));
+		int minval=Integer.MIN_VALUE;
+		for(int i=0;i<str[0].length();i++) {
+			String commonprefixes=str[0].substring(0,i+1);
+			for(int j=1;j<str.length;j++) {
+				if(str[j].startsWith(commonprefixes)) {
+					if(minval<commonprefixes.length()) {
+						minval=commonprefixes.length();
+					}
+				}
+			}
+		}
+		System.out.println(minval);
+	}
+}
+
+//13. finds the longest palindrome among all strings in the array
+
+package basics;
+public class Test6 {
+	public static boolean ispalandromic(String str) {
+		String rev="";
+		for(int i=str.length()-1;i>=0;i--) {
+			rev=rev+str.charAt(i);
+		}
+		return rev.equals(str);
+	}
+	public static String longestPlandromicSubString(String str) {
+		int maxLength=Integer.MIN_VALUE;
+		String LongestSubString="";
+		for(int i=0;i<str.length();i++) {
+			for(int j=i+1;j<=str.length();j++) {
+				String SubString=str.substring(i,j);
+				if(ispalandromic(SubString)) {
+					if(SubString.length()>maxLength) {
+						maxLength=SubString.length();
+						LongestSubString=SubString;
+					}	
+				}
+			}
+		}
+		return LongestSubString;
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String[] Str= {"abcbada","qwewqu","poiuyuiopo"};
+		String LongestString="";
+		int maxLength=Integer.MIN_VALUE;
+		for(int i=0; i<Str.length;i++) {
+			String str=longestPlandromicSubString(Str[i]);
+			if(str.length()>maxLength) {
+				maxLength=str.length();
+				LongestString=str;
+			}
+			
+		}
+		System.out.println(LongestString);
+	}
+}
+
+//14. 
+
+
+
+
 
 
 
