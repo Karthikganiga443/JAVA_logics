@@ -576,7 +576,79 @@ public class Test6 {
 	}
 }
 
-//14. 
+//14. printing all substrings that have no repeated characters.
+
+package basics;
+import java.util.*;
+public class Test7 {
+	public static void NoduplicateSubstring(String str) {
+		for(int i=0;i<str.length();i++) {
+			for(int j=i;j<=str.length();j++) {
+//				System.out.println(str.charAt(i)+" "+str.charAt(j));
+				String str2=str.substring(i,j);
+				if(Nonrepeatedcharacter(str2)) {
+					System.out.println(str2);
+				}
+			}
+		}
+	}
+	public static boolean Nonrepeatedcharacter(String str) {
+		for(int i=0;i<str.length();i++) {
+			if(str.indexOf(str.charAt(i))!=str.lastIndexOf(str.charAt(i))) {
+				return false;
+			}
+		}
+		return true;
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String Str= "abcdabefga";
+		NoduplicateSubstring(Str);
+	}
+
+}
+
+//15. Count the frequency of each character in the input string, print repeated character, non repeated character
+
+package basics;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+public class Test8 {
+	public static void getFreqency(String str) {
+		Map<Character, Integer> map=new LinkedHashMap<>();
+		for(int i=0;i<str.length();i++) {
+			if(map.containsKey(str.charAt(i))) {
+				map.put(str.charAt(i), map.get(str.charAt(i))+1);
+			}
+			else {
+				map.put(str.charAt(i), map.getOrDefault(str.charAt(i),1));
+			}
+		}
+//		System.out.println("count of character");
+//		System.out.println("repeated character");
+		System.out.println("non-repeated character");
+		for(Map.Entry<Character, Integer> entry:map.entrySet()) {
+//			System.out.println(entry.getKey()+" "+entry.getValue());//count of character
+			
+//			if(entry.getValue()>1) {
+//				System.out.println(entry.getKey());//repeated character
+//			}
+//			
+			if(entry.getValue()==1) {	
+				System.out.println(entry.getKey());//non-repeated character
+			}
+		}
+	}
+public static void main(String[] args) {
+	String str="karthik";
+	getFreqency(str);
+}
+}
+
+
+
 
 
 
