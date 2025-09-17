@@ -96,7 +96,30 @@ public class Test4 {
 	}
 }
 
-Quick Sort: Choose a pivot element from the array. Partition the array such that: Elements less than the pivot are moved to the left or Elements greater than the pivot are moved to the right. Recursively apply Quick Sort to the left and right sub-arrays.
+3. Insertion sort: Start from the second element (index 1), Compare it with elements before it, Insert it into its correct position, Repeat for all elements.
+
+package basics;
+import java.util.Arrays;
+public class Test9{
+	public static void InsertionSort(int[] arr) {
+		for(int i=1;i<arr.length;i++) {
+			int key=arr[i];
+			int j=i-1;
+			while(j>=0 && arr[j]>key) {
+				arr[j+1]=arr[j];
+				j--;
+			}
+			arr[j+1]=key;
+		}
+		System.out.println(Arrays.toString(arr));
+	}
+	public static void main(String[] args) {
+		int [] arr= {6,5,1,3,2,4};
+		InsertionSort(arr);
+	}
+}
+
+4. Quick Sort: Choose a pivot element from the array. Partition the array such that: Elements less than the pivot are moved to the left or Elements greater than the pivot are moved to the right. Recursively apply Quick Sort to the left and right sub-arrays.
 
 package basics;
 
